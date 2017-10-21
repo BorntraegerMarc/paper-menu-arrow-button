@@ -1,13 +1,15 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="./menu-arrow-icons.html">
 
 <dom-module id="paper-menu-arrow-button">
   <template>
     <style>
-      :host {
+       :host {
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <paper-icon-button icon="[[icon]]" on-click="iconClicked"></paper-icon-button>
   </template>
 
   <script>
@@ -20,14 +22,24 @@
      * @demo demo/index.html
      */
     class PaperMenuArrowButton extends Polymer.Element {
-      static get is() { return 'paper-menu-arrow-button'; }
+      static get is() {
+        return 'paper-menu-arrow-button';
+      }
       static get properties() {
         return {
-          prop1: {
+          icon: {
             type: String,
-            value: 'paper-menu-arrow-button'
+            value: 'mddp:arrow-back_menu'
           }
         };
+      }
+
+      iconClicked() {
+        if (this.icon === 'mddp:arrow-back_menu') {
+          this.icon = 'mddp:menu_arrow-back';
+        } else {
+          this.icon = 'mddp:arrow-back_menu';
+        }
       }
     }
 
