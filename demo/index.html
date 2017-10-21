@@ -12,7 +12,7 @@
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
   <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
   <link rel="import" href="../paper-menu-arrow-button.html">
-  
+
   <custom-style>
     <style is="custom-style" include="demo-pages-shared-styles">
 
@@ -25,9 +25,21 @@
     <h3>Basic paper-menu-arrow-button demo</h3>
     <demo-snippet>
       <template>
-        <paper-menu-arrow-button></paper-menu-arrow-button>
+        <dom-bind id="demo">
+          <template>
+            <paper-menu-arrow-button id="menu"></paper-menu-arrow-button>
+            <button on-click="changeMenu">Change Opened property</button>
+          </template>
+        </dom-bind>
       </template>
     </demo-snippet>
+
+    <script>
+      var demo = document.getElementById('demo');
+      demo.changeMenu = function () {
+        this.$.menu.opened = !this.$.menu.opened;
+      }
+    </script>
   </div>
 </body>
 

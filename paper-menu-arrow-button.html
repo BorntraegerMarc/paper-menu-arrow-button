@@ -29,17 +29,23 @@
         return {
           icon: {
             type: String,
-            value: 'mddp:arrow-back_menu'
+            value: 'mddp:arrow-back_menu',
+            readOnly: true
+          },
+          opened: {
+            type: Boolean,
+            notify: true,
+            observer: '_openedChanged'
           }
         };
       }
 
       iconClicked() {
-        if (this.icon === 'mddp:arrow-back_menu') {
-          this.icon = 'mddp:menu_arrow-back';
-        } else {
-          this.icon = 'mddp:arrow-back_menu';
-        }
+        this.opened = !this.opened;
+      }
+
+      _openedChanged(newValue, oldValue) {
+        this._setIcon(this.opened ? 'mddp:menu_arrow-back' : 'mddp:arrow-back_menu');
       }
     }
 
